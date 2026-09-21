@@ -1,4 +1,3 @@
-% !TeX program = xelatex
 % ======================================================================
 % Template d'abstract (2-3 pages) - IAE2 USAE2L-4 Projets d'Initiation à la Recherche
 % Compilation :
@@ -12,6 +11,10 @@
 % ----------------------------------------------------------------------
 \usepackage{iftex}
 
+% Gestionnaire bibliographique : biblatex par défaut ; natbib en option.
+% Pour activer natbib, remplacer \usenatbibfalse par \usenatbibtrue.
+\newif\ifusenatbib
+\usenatbibtrue
 % ----------------------------------------------------------------------
 % Gestion des polices : Raleway
 %   - XeLaTeX/LuaLaTeX : police système via fontspec
@@ -20,15 +23,18 @@
 % pdfLaTeX : nécessite le package CTAN "raleway" (texlive-fonts-extra)
 \usepackage[default,t1]{raleway}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+\fi
 \usepackage[french]{babel}
 \usepackage{microtype}
+\usepackage{csquotes}
 
 % ----------------------------------------------------------------------
 % Mise en page
 % ----------------------------------------------------------------------
 \usepackage[a4paper,hmargin=2cm,vmargin=2cm]{geometry}
-\usepackage{setspace}
+% \usepackage{setspace}
 % \onehalfspacing
 
 % ----------------------------------------------------------------------
@@ -47,12 +53,18 @@
 \graphicspath{{./figs/}}
 
 % ----------------------------------------------------------------------
-% Références bibliographiques (biblatex + biber)
+% Références bibliographiques
 % ----------------------------------------------------------------------
-\usepackage[backend=biber,
-  style=numeric,
-sorting=nyt]{biblatex}
-\addbibresource{references.bib}
+\ifusenatbib
+  \usepackage[numbers,sort&compress]{natbib}
+\else
+  % Remplacer backend=bibtex par backend=biber pour utiliser Biber.
+  \usepackage[backend=bibtex,
+    style=numeric,
+    sorting=nyt,
+    maxbibnames=3]{biblatex}
+  \addbibresource{references.bib}
+\fi
 
 % ----------------------------------------------------------------------
 % Divers utilitaires
@@ -164,8 +176,17 @@ Les deux rendus devront contenir les sections suivantes:
       \item références bibliographiques (au moins 5 références)
     \end{itemize}
 \end{itemize}
+
+Les références bibliographiques doivent être citées dans le texte et listées à la fin du document. Les références peuvent être de différents types : articles scientifiques, chapitres de livres, actes de conférences, thèses, rapports techniques, sites web, logiciels, jeux de données, normes, prépublications, etc. Les références sont automatiquement formatées par \LaTeX à partir du contenu du fichier \texttt{references.bib}. Ce fichier est à remplir de manière exhaustive. L'usage d'un logiciel de gestion de bibliographie (Zotero, etc.) est fortement recommandé pour générer le contenu du fichier \texttt{references.bib}.
+ 
 \clearpage
 \cite{example2024,bookexample2020,chapterexample2021,confexample2022,phdexample2019,masterexample2023,reportexample2023,webexample2024,softwareexample2023,datasetexample2022,standardexample2018,preprintexample2024}
-\printbibliography[title={Références}]
+
+\ifusenatbib
+  \bibliographystyle{plainnat}
+  \bibliography{references}
+\else
+  \printbibliography[title={Références}]
+\fi
 
 \end{document}
