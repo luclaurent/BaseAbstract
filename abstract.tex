@@ -1,0 +1,171 @@
+% !TeX program = xelatex
+% ======================================================================
+% Template d'abstract (2-3 pages) - IAE2 USAE2L-4 Projets d'Initiation à la Recherche
+% Compilation :
+%   - XeLaTeX (recommandé, police Raleway native)   : xelatex abstract.tex && biber abstract && xelatex abstract.tex && xelatex abstract.tex
+%   - pdfLaTeX (fallback, police Raleway via package): pdflatex abstract.tex && biber abstract && pdflatex abstract.tex && pdflatex abstract.tex
+% ======================================================================
+\documentclass[11pt,a4paper]{article}
+
+% ----------------------------------------------------------------------
+% Détection du moteur de compilation (pdflatex / xelatex / lualatex)
+% ----------------------------------------------------------------------
+\usepackage{iftex}
+
+% ----------------------------------------------------------------------
+% Gestion des polices : Raleway
+%   - XeLaTeX/LuaLaTeX : police système via fontspec
+%   - pdfLaTeX          : package "raleway" (CTAN) en fallback
+% ----------------------------------------------------------------------
+% pdfLaTeX : nécessite le package CTAN "raleway" (texlive-fonts-extra)
+\usepackage[default,t1]{raleway}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{microtype}
+
+% ----------------------------------------------------------------------
+% Mise en page
+% ----------------------------------------------------------------------
+\usepackage[a4paper,hmargin=2cm,vmargin=2cm]{geometry}
+\usepackage{setspace}
+% \onehalfspacing
+
+% ----------------------------------------------------------------------
+% Mathématiques
+% ----------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+% ----------------------------------------------------------------------
+% Graphiques / figures
+% ----------------------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{caption}
+\graphicspath{{./figs/}}
+
+% ----------------------------------------------------------------------
+% Références bibliographiques (biblatex + biber)
+% ----------------------------------------------------------------------
+\usepackage[backend=biber,
+  style=numeric,
+sorting=nyt]{biblatex}
+\addbibresource{references.bib}
+
+% ----------------------------------------------------------------------
+% Divers utilitaires
+% ----------------------------------------------------------------------
+\usepackage{authblk}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+urlcolor=blue]{hyperref}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% ----------------------------------------------------------------------
+% Espacement réduit avant/après les titres de section
+% ----------------------------------------------------------------------
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.5ex plus .5ex minus .2ex}{0.8ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.2ex plus .4ex minus .2ex}{0.6ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1ex plus .3ex minus .2ex}{0.4ex plus .2ex}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{IAE2 -- USAE2L-4 -- Projets d'Initiation à la Recherche -- 2026-2027}
+\fancyhead[R]{\includegraphics[height=1cm]{LOGO_eiCnam_web_rouge_rec_border.pdf}}
+\fancyfoot[C]{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ----------------------------------------------------------------------
+% Informations du document (à compléter)
+% ----------------------------------------------------------------------
+\title{\vspace*{-2em}\textbf{Titre du projet de recherche}}
+\author[1]{Prénom NOM}
+\author[1,2]{Prénom NOM}
+\affil[1]{Affiliation / établissement, ville, pays}
+\affil[2]{Affiliation / établissement, ville, pays}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+% ======================================================================
+% NB : l'abstract complet (hors références) doit tenir sur 2 à 3 pages.
+% Les sections ci-dessous sont OBLIGATOIRES.
+% ======================================================================
+
+\noindent\textbf{Mots-clés :} Mot-clé 1 ; Mot-clé 2 ; Mot-clé 3 ; Mot-clé 4 ; Mot-clé 5
+
+\section{Introduction et contexte}
+\label{sec:introduction}
+Présenter ici le contexte général du projet, la problématique scientifique et les motivations qui justifient la recherche entreprise. Situer le travail par rapport à l'état de l'art~\cite{example2024}.
+
+
+\section{Objectifs}
+\label{sec:objectifs}
+Formuler clairement les objectifs du projet et, le cas échéant, les hypothèses de recherche testées, par exemple sous la forme d'un modèle mathematique :
+\begin{equation}
+  f(x) = \sum_{i=1}^{n} \alpha_i \, \varphi_i(x), \qquad \alpha_i \in \mathbb{R}
+  \label{eq:modele}
+\end{equation}
+ou $\varphi_i$ désigne une fonction de base et $\alpha_i$ les coefficients associés (cf. Eq.~\eqref{eq:modele}).
+
+\section{Méthodologie}
+\label{sec:methodologie}
+Décrire la démarche scientifique, les méthodes, outils, données et protocoles expérimentaux utilisés pour répondre aux objectifs fixés.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{example-image}
+  \caption{Légende de la figure illustrant la méthodologie ou un résultat clé.}
+  \label{fig:illustration}
+\end{figure}
+\section{Modèle mathématique, modèle physique et/ou algorithmique}
+\label{sec:modeles}
+Présenter les modèles mathématiques, physiques et/ou algorithmiques utilisés dans le projet en employant des notations et équations clairement définies.  
+
+\section{Résultats attendus / obtenus}
+\label{sec:resultats}
+Présenter les résultats obtenus (ou attendus si le projet est en  cours), en s'appuyant si besoin sur la Figure~\ref{fig:illustration} et sur des éléments quantitatifs.
+
+\section{Conclusion et perspectives}
+\label{sec:conclusion}
+Synthétiser l'apport du travail, ses limites, et les perspectives de recherche futures.
+
+\section{Instructions}
+Les deux rendus devront contenir les sections suivantes:
+\begin{itemize}
+  \item pour le rendu intermédiaire:
+    \begin{itemize}
+      \item introduction/contexte/problématique
+      \item objectifs envisagés
+      \item méthodologie envisagée
+      \item modèle mathématique, modèle physique et/ou algorithmique
+      \item analyse succincte de la littérature succincte de la litérature sur le sujet
+      \item planification prévisionnelle du projet (intégrant les résultats attendus et la répartition des tâches)
+      \item références bibliographiques (au moins 8 références)
+    \end{itemize}
+  \item pour le rendu final:
+    \begin{itemize}
+      \item introduction/contexte/problématique
+      \item objectifs
+      \item démarche et méthodologie scientifique
+      \item modèle mathématique, modèle physique et/ou algorithmique
+      \item résultats obtenus et discussion
+      \item conclusion et perspectives
+      \item références bibliographiques (au moins 5 références)
+    \end{itemize}
+\end{itemize}
+\clearpage
+\cite{example2024,bookexample2020,chapterexample2021,confexample2022,phdexample2019,masterexample2023,reportexample2023,webexample2024,softwareexample2023,datasetexample2022,standardexample2018,preprintexample2024}
+\printbibliography[title={Références}]
+
+\end{document}
