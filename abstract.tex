@@ -1,4 +1,4 @@
-% ======================================================================
+
 % Template d'abstract (2-3 pages) - IAE2 USAE2L-4 Projets d'Initiation à la Recherche
 % Compilation :
 %   - XeLaTeX (recommandé, police Raleway native)   : xelatex abstract.tex && biber abstract && xelatex abstract.tex && xelatex abstract.tex
@@ -50,6 +50,7 @@
 % ----------------------------------------------------------------------
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{subcaption}
 \graphicspath{{./figs/}}
 
 % ----------------------------------------------------------------------
@@ -146,13 +147,14 @@ Présenter les modèles mathématiques, physiques et/ou algorithmiques utilisés
 
 \section{Résultats attendus / obtenus}
 \label{sec:resultats}
-Présenter les résultats obtenus (ou attendus si le projet est en  cours), en s'appuyant si besoin sur la Figure~\ref{fig:illustration} et sur des éléments quantitatifs.
+Présenter les résultats obtenus (ou attendus si le projet est en  cours), en s'appuyant si besoin sur la Figure~\ref{fig:illustration} et sur des éléments quantitatifs. Il est également possible de faire référence aux figures en annexe (cf. Fig.~\ref{fig:annexe-a} et Fig.~\ref{fig:annexe-b}).
 
 \section{Conclusion et perspectives}
 \label{sec:conclusion}
 Synthétiser l'apport du travail, ses limites, et les perspectives de recherche futures.
 
 \section{Instructions}
+Les documents rendus ne doivent pas excéder 3 pages de coeur  auquel s'ajoute une page de références maximum et une page d'illustrations (si pertinent) maximum .
 Les deux rendus devront contenir les sections suivantes:
 \begin{itemize}
   \item pour le rendu intermédiaire:
@@ -177,10 +179,15 @@ Les deux rendus devront contenir les sections suivantes:
     \end{itemize}
 \end{itemize}
 
+Le document final ne pourra intégrer plus de 2 images couvrant une surface totale de 1/3 page A4 dans le corps du texte. Une page d'annexe pourra être intégrée contenant des images/illustrations/schémas légendées et citées dans le texte.
+
+
 Les références bibliographiques doivent être citées dans le texte et listées à la fin du document. Les références peuvent être de différents types : articles scientifiques, chapitres de livres, actes de conférences, thèses, rapports techniques, sites web, logiciels, jeux de données, normes, prépublications, etc. Les références sont automatiquement formatées par \LaTeX à partir du contenu du fichier \texttt{references.bib}. Ce fichier est à remplir de manière exhaustive. L'usage d'un logiciel de gestion de bibliographie (Zotero, etc.) est fortement recommandé pour générer le contenu du fichier \texttt{references.bib}.
+
+\cite{example2024,bookexample2020,chapterexample2021,confexample2022,phdexample2019,masterexample2023,reportexample2023,webexample2024,softwareexample2023,datasetexample2022,standardexample2018,preprintexample2024}
+
  
 \clearpage
-\cite{example2024,bookexample2020,chapterexample2021,confexample2022,phdexample2019,masterexample2023,reportexample2023,webexample2024,softwareexample2023,datasetexample2022,standardexample2018,preprintexample2024}
 
 \ifusenatbib
   \bibliographystyle{plainnat}
@@ -188,5 +195,25 @@ Les références bibliographiques doivent être citées dans le texte et listée
 \else
   \printbibliography[title={Références}]
 \fi
+\clearpage
+\appendix
+\section*{Illustrations (si pertinent)}
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{example-image}
+    \caption{Première illustration.}
+    \label{fig:annexe-a}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{example-image}
+    \caption{Seconde illustration.}
+    \label{fig:annexe-b}
+  \end{subfigure}
+  \caption{Illustrations complémentaires présentées en annexe.}
+  \label{fig:annexe}
+\end{figure}
 
 \end{document}
